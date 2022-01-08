@@ -4,5 +4,5 @@
 </script>
 
 <main>
-	<TableArea/>
+	<TableArea gridCols=9 gridRows=9 />
 </main>
