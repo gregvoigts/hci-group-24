@@ -1,8 +1,22 @@
 <script>
-	import TableArea from "./components/TableArea.svelte";
-
+    import Header from "./components/Header.svelte";    
+    import Customer from "./components/Customer.svelte";
+    
 </script>
 
-<main>
-	<TableArea gridCols=9 gridRows=9 />
+<svelte:head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</svelte:head>
+
+<Header/>
+
+<main>    
+    <Customer/>
 </main>
+
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p class="has-text-weight-light">Santas Reindeers</p>
+        
+    </div>
+</footer>
