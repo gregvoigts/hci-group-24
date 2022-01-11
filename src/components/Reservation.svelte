@@ -2,8 +2,6 @@
     let date, time, persons, name, tel, email, wishes;
 </script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-
 <div class="p-4 control">
     <div class="columns">
         <div class="column" >

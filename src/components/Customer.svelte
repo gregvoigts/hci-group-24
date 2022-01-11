@@ -1,7 +1,7 @@
 <script>
     import TableArea from "./TableArea.svelte";
     import Reservation from "./Reservation.svelte";
-
+    import Menu from "./Menu.svelte";
     let showContent = 'reservation';
 </script>
 
@@ -21,9 +21,7 @@
     {:else if showContent == 'tables'}        
         <TableArea gridCols=9 gridRows=9 />
     {:else if showContent == 'menu'}
-        <div id="menu">
-
-        </div>
+        <Menu/>
     {/if}
 </div>
 
