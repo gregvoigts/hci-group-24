@@ -21,8 +21,6 @@
     </div>
 </footer>
 
-<style>
-    :global {
-        @import 'src/styles/global.scss';
-    }
+<style global>
+    @import 'src/styles/global.scss';
 </style>

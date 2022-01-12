@@ -2,7 +2,9 @@
     <nav class="navbar">
         <div class="navbar-brand">
             <a href="/" class="navbar-item">
-                <p>🦌</p>
+                <span class="icon">
+                    🦌
+                </span>
             </a>
         </div>
         <div class="navbar-menu">
@@ -34,6 +36,10 @@
     .name {
         font-family: 'Niconne', cursive;
         color: $red-dark;
+    }
+
+    .icon {
+        font-size: xx-large;
     }
 
 </style>
