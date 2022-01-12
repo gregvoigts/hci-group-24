@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"> -->
 </svelte:head>
 
 <Header/>
@@ -20,3 +20,9 @@
         
     </div>
 </footer>
+
+<style>
+    :global {
+        @import 'src/styles/global.scss';
+    }
+</style>

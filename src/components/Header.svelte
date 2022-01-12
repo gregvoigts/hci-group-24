@@ -6,9 +6,9 @@
             </a>
         </div>
         <div class="navbar-menu">
-            <a href="/" class="navbar-item is-centered">
-                <p class="is-text-weigt-bold">Santas Reindeers</p>
-            </a>
+            <div class="navbar-item is-centered">
+                <p class="name has-text-weigt-bold is-size-1">Santas Reindeers</p>
+            </div>
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
@@ -24,10 +24,16 @@
     </nav>
 </header>
 
-<style>
+<style lang="scss">
+    @import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
 
     .navbar {
         background: #fafafa;
+    }
+
+    .name {
+        font-family: 'Niconne', cursive;
+        color: $red-dark;
     }
 
 </style>
