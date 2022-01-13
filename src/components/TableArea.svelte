@@ -3,7 +3,7 @@
         overflow: hidden;
         display: block;
         height:38.5vw ;
-        padding: 11px 14px;
+        padding: 2vh 1.3vw;
     }
     .area_column{
         padding: 0;
