@@ -23,6 +23,13 @@
     <div class="columns">
         <div class="column is-half">
             <Reservation/>   
+            <div class="columns p-4 ">
+                <div class="column">
+                    <button class="button is-primary" on:click="{() => alert('Vielen Dank für Ihre Reservierung, wir haben Ihre Daten erhalten!\nSie haben eine Bestätigung per E-Mail erhalten.')}">
+                        <span>reservieren</span>
+                    </button>
+                </div>
+            </div>
         </div>
         <div class="column">
             <TableArea gridCols=9 gridRows=9 />
