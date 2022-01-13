@@ -68,7 +68,7 @@ import { each } from "svelte/internal";
     function deleteReservation(id) {
         console.log(reservations)
         console.log(id - 1)
-        reservations.splice(id - 1, 1)
+        reservations.splice(id , 1)
         reservations = reservations
         for (let index = 0; index < reservations.length; index++) {
             reservations[index].id = index;  
