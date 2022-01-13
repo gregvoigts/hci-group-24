@@ -2,7 +2,10 @@
     import TableArea from "./TableArea.svelte";
     import Reservation from "./Reservation.svelte";
     import Menu from "./Menu.svelte";
-    let showContent = 'reservation';
+    import Staff from "./Staff-scaffold.svelte"
+    
+
+    let showContent = 'staff';
 </script>
 
 <div class="tabs is-centered is-medium is-boxed">
@@ -11,6 +14,8 @@
         <li class:is-active="{showContent == 'reservation'}"><a on:click="{() => showContent='reservation'}">Reservierung</a></li>
         <!-- svelte-ignore a11y-missing-attribute -->
         <li class:is-active="{showContent == 'menu'}"><a on:click="{() => showContent='menu'}">Speisekarte</a></li>
+        <!-- svelte-ignore a11y-missing-attribute -->
+        <li class:is-active="{showContent == 'staff'}"><a on:click="{() => showContent='staff'}">Staff</a></li>
     </ul>
 </div>
 <div id="tab-content">
@@ -25,6 +30,8 @@
     </div>
     {:else if showContent == 'menu'}
     <Menu/>
+    {:else if showContent == 'staff'}  
+        <Staff/>
     {/if}
 </div>
 
