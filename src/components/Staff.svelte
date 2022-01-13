@@ -1,6 +1,7 @@
 <script>
 import { each } from "svelte/internal";
-
+    
+    import {selectedIds,selectedListSize} from "../store/Navigation.js";
     import TableArea from "./TableArea.svelte";
 
     $: reservations = [
@@ -11,14 +12,11 @@ import { each } from "svelte/internal";
         {id: 4, name: "Hubert", date: "24.12.2021", time: "13:00", persons: 4, table: [53]},   
     ]
     
-
-    let tables = []
     let name;
     let date;
     let time;
     let persons;
     let table;
-    let k = 1;
 
     const onFocus =()=>isFocused=true;
 	const onBlur =()=>isFocused=false;
@@ -30,8 +28,9 @@ import { each } from "svelte/internal";
 
     function createReservation() {
         var input = document.getElementById("input");
-        let id = reservations.length + 1;
-        let reservation = {id, name, date, time, persons}
+        let id = reservations.length;
+        let table = $selectedIds
+        let reservation = {id, name, date, time, persons, table }
         reservations.push(reservation);
         reservations = reservations
         console.log(reservations)
@@ -44,7 +43,11 @@ import { each } from "svelte/internal";
     }
 
     function changeReservation(id) {
-        tables = reservations[id].table
+        console.log(id)
+        console.log(reservations)
+        $selectedIds = reservations[id].table
+        
+        $selectedListSize = reservations[id].table.length
         var input = document.getElementById(id);
         input.style.display = "none"
         var output = document.getElementById(-id);
@@ -56,7 +59,8 @@ import { each } from "svelte/internal";
         input.style.display = "block"
         var output = document.getElementById(-id);
         output.style.display= "none"
-        tables = []
+        $selectedIds = []
+        $selectedListSize = 0
     }
 
     function deleteReservation(id) {
@@ -142,7 +146,6 @@ import { each } from "svelte/internal";
                         <input bind:value={date} placeholder="Date">
                         <input bind:value={time} placeholder="Time">
                         <input bind:value={persons} placeholder="Nr of Persons">
-                        <input bind:value={table} placeholder="Table nr">
                         <p class="button is-primary" on:click={createReservation}><strong>Create</strong></p>
                 </div> 
             </ul> 
@@ -153,7 +156,7 @@ import { each } from "svelte/internal";
     
 
     <div class="column" style="border: solid;">
-        <TableArea isStaff=1 selectedIds={tables}/>
+        <TableArea isStaff=1/>
     </div>
 </div>
 
