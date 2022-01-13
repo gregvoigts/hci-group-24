@@ -177,8 +177,7 @@
         girdFieldId++;
         return id;
     }
-    export let selectedIds = writable([]);
-    export let selectedListSize = writable(0);
+    import {selectedIds,selectedListSize} from "../store/Navigation.js";
     function tableClicked(tab){
         if(tab.reservId != null && isStaff == 0){
             return;
