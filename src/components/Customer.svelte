@@ -20,20 +20,29 @@
     <div class="columns">
         <div class="column is-half">
             <Reservation/>   
-            <div class="columns p-4 ">
-                <div class="column">
-                    <button class="button is-primary" on:click="{() => alert('Vielen Dank für Ihre Reservierung, wir haben Ihre Daten erhalten!\nSie haben eine Bestätigung per E-Mail erhalten.')}">
-                        <span>reservieren</span>
-                    </button>
-                </div>
-            </div>
+            
         </div>
-        <div class="column">
+        <div class="column is-half">
             <TableArea isStaff=0/>
         </div>
     </div>
+    <div class="column">
+        <div class="buttons is-right">
+            <button class="button is-primary" on:click="{() => showContent='menu'}">
+                <span>Weiter</span>
+            </button>
+        </div>
+    </div>
+
     {:else if showContent == 'menu'}
     <Menu/>
+    <div class="column">
+        <div class="buttons is-right">
+            <button class="button is-primary" on:click="{() => alert('Vielen Dank für Ihre Reservierung, wir haben Ihre Daten erhalten!\nSie haben eine Bestätigung per E-Mail erhalten.')}">
+                <span>Reservieren</span>
+            </button>
+        </div>
+    </div>
     {/if}
 </div>
 
