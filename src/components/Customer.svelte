@@ -25,7 +25,7 @@
             <Reservation/>   
         </div>
         <div class="column">
-            <TableArea gridCols=9 gridRows=9 />
+            <TableArea isStaff=0/>
         </div>
     </div>
     {:else if showContent == 'menu'}

@@ -37,10 +37,10 @@
         position: absolute;
         z-index: -10;
     }
-    .free{
+    .moveable{
         cursor: pointer;
     }
-    .reserved{
+    .blocked{
         cursor: not-allowed;
     }
 </style>
@@ -49,6 +49,8 @@
 
     let gridRows = 15;
     let gridCols = 20;
+
+    export let isStaff;
 
     let idDragged = undefined;
 
@@ -177,7 +179,7 @@
     let selectedIds = [];
     let selectedListSize = 0;
     function tableClicked(tab){
-        if(tab.reservId != null){
+        if(tab.reservId != null && isStaff == 0){
             return;
         }
         let id = tab.id;
@@ -202,11 +204,11 @@
          {#each row as pos}
               <div id="gridField_{getFieldId()}" class="field has-addons has-addons-centered table_field" on:dragover={allowDrop} on:drop={dropHandler}>
                   {#if pos != null}
-                  <div on:drag={dragHandler} id="table_{pos.id}" class="field has-addons has-addons-centered table {pos.reservId==null?"free":"reserved"}" draggable="{pos.reservId==null}"  on:click="{() => tableClicked(pos)}">
+                  <div on:drag={dragHandler} id="table_{pos.id}" class="field has-addons has-addons-centered table {pos.reservId==null?"moveable":(isStaff==1?"moveable":"blocked")}" draggable="{pos.reservId==null?"true":(isStaff==1?"true":"false")}"  on:click="{() => tableClicked(pos)}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="238.451 191.51 29.71 55.2" width="29.71" height="55.2">
-                        <rect x="241.704" y="191.51" width="22.781" height="16.577" style="fill: {pos.reservId==null?(selectedIds.indexOf(pos.id)!=-1?"orange":"green"):"red"}; stroke: rgb(0, 0, 0);"/>
-                        <rect x="241.999" y="230.133" width="22.781" height="16.577" style="fill: {pos.reservId==null?(selectedIds.indexOf(pos.id)!=-1?"orange":"green"):"red"}; stroke: rgb(0, 0, 0);"/>
-                        <rect x="238.451" y="201.997" width="29.71" height="34.579" style="fill: {pos.reservId==null?(selectedIds.indexOf(pos.id)!=-1?"orange":"green"):"red"}; stroke: rgb(0, 0, 0);"/>
+                        <rect x="241.704" y="191.51" width="22.781" height="16.577" style="fill: {selectedIds.indexOf(pos.id)!=-1?"orange":(pos.reservId==null?"green":"red")}; stroke: rgb(0, 0, 0);"/>
+                        <rect x="241.999" y="230.133" width="22.781" height="16.577" style="fill: {selectedIds.indexOf(pos.id)!=-1?"orange":(pos.reservId==null?"green":"red")}; stroke: rgb(0, 0, 0);"/>
+                        <rect x="238.451" y="201.997" width="29.71" height="34.579" style="fill: {selectedIds.indexOf(pos.id)!=-1?"orange":(pos.reservId==null?"green":"red")}; stroke: rgb(0, 0, 0);"/>
                         <text xmlns="http://www.w3.org/2000/svg" style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 11px; font-weight: 700; text-anchor: middle; white-space: pre;" transform="matrix(2.024701, 0, 0, 1.510878, -248.931961, -104.71032)" x="247.903" y="218.044">{pos.id}</text>
                       </svg>
                 </div>

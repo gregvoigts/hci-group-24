@@ -149,7 +149,7 @@ import { each } from "svelte/internal";
     
 
     <div class="column" style="border: solid;">
-        <TableArea gridCols=9 gridRows=9 />
+        <TableArea isStaff=1 />
     </div>
 </div>
 
