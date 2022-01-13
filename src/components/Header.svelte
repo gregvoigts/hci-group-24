@@ -1,5 +1,7 @@
 <script>
     import {showCustomer} from "../store/Navigation.js"
+
+    let loggedIn = false;
 </script>
 
 <header>
@@ -22,9 +24,9 @@
                             <strong>{$showCustomer ? 'Customer' : 'Staff'}</strong>
                         </button>
 
-                        <a href="/" class="button is-light">
-                        Log in
-                        </a>
+                        <button on:click="{() => loggedIn = !loggedIn}" class="button">
+                            <span>{loggedIn ? 'Log out' : 'Log in'}</span>
+                        </button>
                   </div>
                 </div>
               </div>
