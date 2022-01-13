@@ -19,7 +19,7 @@
                 <div class="navbar-item">
                     <div class="buttons">
                         <button class="button is-primary" on:click="{() => $showCustomer = !$showCustomer}">
-                            <strong>Customer</strong>
+                            <strong>{$showCustomer ? 'Customer' : 'Staff'}</strong>
                         </button>
 
                         <a href="/" class="button is-light">
