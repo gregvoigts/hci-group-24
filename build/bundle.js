@@ -1085,7 +1085,7 @@ var app = (function () {
     			: /*pos*/ ctx[19].reservId == null ? "green" : "red");
 
     			set_style(rect0, "stroke", "rgb(0, 0, 0)");
-    			add_location(rect0, file$5, 213, 24, 6404);
+    			add_location(rect0, file$5, 213, 24, 6405);
     			attr_dev(rect1, "x", "241.999");
     			attr_dev(rect1, "y", "230.133");
     			attr_dev(rect1, "width", "22.781");
@@ -1096,7 +1096,7 @@ var app = (function () {
     			: /*pos*/ ctx[19].reservId == null ? "green" : "red");
 
     			set_style(rect1, "stroke", "rgb(0, 0, 0)");
-    			add_location(rect1, file$5, 214, 24, 6607);
+    			add_location(rect1, file$5, 214, 24, 6608);
     			attr_dev(rect2, "x", "238.451");
     			attr_dev(rect2, "y", "201.997");
     			attr_dev(rect2, "width", "29.71");
@@ -1107,7 +1107,7 @@ var app = (function () {
     			: /*pos*/ ctx[19].reservId == null ? "green" : "red");
 
     			set_style(rect2, "stroke", "rgb(0, 0, 0)");
-    			add_location(rect2, file$5, 215, 24, 6811);
+    			add_location(rect2, file$5, 215, 24, 6812);
     			attr_dev(text_1, "xmlns", "http://www.w3.org/2000/svg");
     			set_style(text_1, "fill", "rgb(51, 51, 51)");
     			set_style(text_1, "font-family", "Arial, sans-serif");
@@ -1118,13 +1118,13 @@ var app = (function () {
     			attr_dev(text_1, "transform", "matrix(2.024701, 0, 0, 1.510878, -248.931961, -104.71032)");
     			attr_dev(text_1, "x", "247.903");
     			attr_dev(text_1, "y", "218.044");
-    			add_location(text_1, file$5, 216, 24, 7014);
+    			add_location(text_1, file$5, 216, 24, 7015);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg, "viewBox", "238.451 191.51 29.71 55.2");
     			attr_dev(svg, "width", "29.71");
     			attr_dev(svg, "height", "55.2");
     			attr_dev(svg, "class", "svelte-pz26kz");
-    			add_location(svg, file$5, 212, 20, 6274);
+    			add_location(svg, file$5, 212, 20, 6275);
     			attr_dev(div, "id", div_id_value = "table_" + /*pos*/ ctx[19].id);
 
     			attr_dev(div, "class", div_class_value = "field has-addons has-addons-centered table " + (/*pos*/ ctx[19].reservId == null
@@ -1135,7 +1135,7 @@ var app = (function () {
     			? "true"
     			: /*isStaff*/ ctx[0] == 1 ? "true" : "false");
 
-    			add_location(div, file$5, 211, 18, 5982);
+    			add_location(div, file$5, 211, 18, 5983);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -1225,7 +1225,7 @@ var app = (function () {
     			if (if_block) if_block.c();
     			attr_dev(div, "id", "gridField_" + /*getFieldId*/ ctx[6]());
     			attr_dev(div, "class", "field has-addons has-addons-centered table_field svelte-pz26kz");
-    			add_location(div, file$5, 209, 14, 5787);
+    			add_location(div, file$5, 209, 14, 5788);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -1295,7 +1295,7 @@ var app = (function () {
 
     			t = space();
     			attr_dev(div, "class", "field is-horizontal area_column svelte-pz26kz");
-    			add_location(div, file$5, 207, 8, 5697);
+    			add_location(div, file$5, 207, 8, 5698);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -1373,12 +1373,12 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			if (!src_url_equal(img.src, img_src_value = "/restaurant.png")) attr_dev(img, "src", img_src_value);
+    			if (!src_url_equal(img.src, img_src_value = "./restaurant.png")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "restaurant");
     			attr_dev(img, "class", "svelte-pz26kz");
     			add_location(img, file$5, 204, 4, 5582);
     			attr_dev(div0, "class", "field table_area svelte-pz26kz");
-    			add_location(div0, file$5, 205, 0, 5628);
+    			add_location(div0, file$5, 205, 0, 5629);
     			attr_dev(div1, "class", "field");
     			add_location(div1, file$5, 203, 0, 5557);
     		},
