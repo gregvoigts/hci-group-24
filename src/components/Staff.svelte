@@ -40,6 +40,8 @@ import { each } from "svelte/internal";
         time = ""
         persons = ""
         table = []
+        $selectedIds = []
+        $selectedListSize = 0
     }
 
     function changeReservation(id) {
