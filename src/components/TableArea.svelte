@@ -176,7 +176,7 @@
         girdFieldId++;
         return id;
     }
-    let selectedIds = [];
+    export let selectedIds = [];
     let selectedListSize = 0;
     function tableClicked(tab){
         if(tab.reservId != null && isStaff == 0){
