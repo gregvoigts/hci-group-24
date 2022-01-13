@@ -56,6 +56,7 @@ import { each } from "svelte/internal";
         input.style.display = "block"
         var output = document.getElementById(-id);
         output.style.display= "none"
+        tables = []
     }
 
     function deleteReservation(id) {
