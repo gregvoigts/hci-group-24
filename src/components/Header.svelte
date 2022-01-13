@@ -1,3 +1,7 @@
+<script>
+    import {showCustomer} from "../store/Navigation.js"
+</script>
+
 <header>
     <nav class="navbar">
         <div class="navbar-brand">
@@ -14,7 +18,9 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <p class="button is-primary"><strong>Customer</strong></p>
+                        <button class="button is-primary" on:click="{() => $showCustomer = !$showCustomer}">
+                            <strong>{$showCustomer ? 'Customer' : 'Staff'}</strong>
+                        </button>
 
                         <a href="/" class="button is-light">
                         Log in

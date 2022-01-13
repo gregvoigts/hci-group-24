@@ -95,31 +95,27 @@ import { each } from "svelte/internal";
                     <div class="message mb-2">
                         <div id={res.id}>
                             <div class="message-header" 
-                            style="display: {changeOutput};"
-                            on:focus={onFocus} 
-                            on:blur={onBlur} 
-                            on:click={changeReservation(res.id)} 
-                            on:mouseover={hover(res.id)} 
-                            on:mouseout={hoverNot(res.id)}
-                        >    
-                            {res.name}
+                                id={res.id + 10}
+                                on:focus={onFocus} 
+                                on:blur={onBlur} 
+                                on:click={changeReservation(res.id)} 
+                                on:mouseover={hover(res.id + 10)} 
+                                on:mouseout={hoverNot(res.id + 10)}
+                            >    
+                                {res.name}
+                            </div>
+                        
+                            <div class="message-body" style="font-size: 15pt;">
+                                {res.date}
+                                {res.time}
+                                {res.persons}
+                            </div> 
                         </div>
                         
-                        <div class="message-body" style="font-size: 15pt;">
-                            {res.date}
-                            {res.time}
-                            {res.persons}
-                        </div> 
-                    </div>
-                        
-                    <div id={-res.id} style="display: none">
-                        <div  class="message-header" 
-                            on:focus={onFocus} 
-                            on:blur={onBlur} 
-                            on:click={changeReservation(res.id)} 
-                            on:mouseover={hover(res.id)} 
-                            on:mouseout={hoverNot(res.id)}
-                        >
+                        <div id={-res.id} style="display: none">
+                            <div  class="message-header" 
+                                on:click={changeReservation(res.id)} 
+                            >
                             <input bind:value={res.name} placeholder="Name">
                         </div>
                         
@@ -155,7 +151,7 @@ import { each } from "svelte/internal";
     
 
     <div class="column" style="border: solid;">
-        <TableArea gridCols=9 gridRows=9 />
+        <TableArea isStaff=1 />
     </div>
 </div>
 

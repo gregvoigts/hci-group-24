@@ -1,17 +1,20 @@
 <script>
     import Header from "./components/Header.svelte";    
     import Customer from "./components/Customer.svelte";
-    
-</script>
+    import Staff from "./components/Staff.svelte"
+    import {showCustomer} from "./store/Navigation.js"
 
-<svelte:head>
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"> -->
-</svelte:head>
+
+</script>
 
 <Header/>
 
-<main>    
+<main>
+    {#if $showCustomer}
     <Customer/>
+    {:else}
+    <Staff/>
+    {/if}
 </main>
 
 <footer class="footer">
