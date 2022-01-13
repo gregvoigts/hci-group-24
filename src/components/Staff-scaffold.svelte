@@ -4,6 +4,7 @@ import { each } from "svelte/internal";
     import TableArea from "./TableArea.svelte";
 
     $: reservations = [
+        {id: 0, name: "Santa", date: "24.12.2021", time: "13:00", persons: 4, table: 4},
         {id: 1, name: "Santa", date: "24.12.2021", time: "13:00", persons: 4, table: 4},
         {id: 2, name: "Bert", date: "24.12.2021", time: "13:00", persons: 4, table: 4},
         {id: 3, name: "Klaus", date: "24.12.2021", time: "13:00", persons: 4, table: 4},
@@ -57,6 +58,8 @@ import { each } from "svelte/internal";
     }
 
     function deleteReservation(id) {
+        console.log(reservations)
+        console.log(id - 1)
         reservations.splice(id - 1, 1)
         reservations = reservations
         for (let index = 0; index < reservations.length; index++) {
@@ -86,6 +89,8 @@ import { each } from "svelte/internal";
         <div style="overflow: hidden; overflow-y: scroll">
             <ul class="p-2" style="height: 648px">
                 {#each reservations as res}
+                {#if res.id != 0}
+                
                 <li>
                     <div class="message mb-2">
                         <div id={res.id}>
@@ -129,6 +134,7 @@ import { each } from "svelte/internal";
                         
                     </div>
                 </li>
+                {/if}
                 {/each}
                 <div id=input class="message mb-2" style="display: none;">
                     <div class="message-header">
