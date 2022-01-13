@@ -5,10 +5,10 @@
         if(id == 15){
             document.getElementById(15).innerHTML = "schäm dich";
         }
-        else if(document.getElementById(id).classList.contains("is-primary")) {
+        else if(document.getElementById(id).classList.contains("is-success")) {
             document.getElementById(id).classList = "notification";
         } else {
-            document.getElementById(id).classList = "notification is-primary";
+            document.getElementById(id).classList = "notification is-success";
         }
     }
 </script>
