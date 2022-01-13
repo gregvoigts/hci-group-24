@@ -4,20 +4,20 @@ import { each } from "svelte/internal";
     import TableArea from "./TableArea.svelte";
 
     $: reservations = [
-        {id: 0, name: "Santa", date: "24.12.2021", time: "13:00", persons: 4, table: 4},
-        {id: 1, name: "Santa", date: "24.12.2021", time: "13:00", persons: 4, table: 4},
-        {id: 2, name: "Bert", date: "24.12.2021", time: "13:00", persons: 4, table: 4},
-        {id: 3, name: "Klaus", date: "24.12.2021", time: "13:00", persons: 4, table: 4},
-        {id: 4, name: "Hubert", date: "24.12.2021", time: "13:00", persons: 4, table: 4},   
+        {id: 0, name: "Santa", date: "24.12.2021", time: "13:00", persons: 4, table: [1,2,3]},
+        {id: 1, name: "Santa", date: "24.12.2021", time: "13:00", persons: 4, table: [4,5,6]},
+        {id: 2, name: "Bert", date: "24.12.2021", time: "13:00", persons: 4, table: [7,8,9]},
+        {id: 3, name: "Klaus", date: "24.12.2021", time: "13:00", persons: 4, table: [10,11,12]},
+        {id: 4, name: "Hubert", date: "24.12.2021", time: "13:00", persons: 4, table: [53]},   
     ]
-    console.log(reservations)
+    
+
+    let tables = []
     let name;
     let date;
     let time;
     let persons;
     let table;
-    let changeInput = "none"
-    let changeOutput = "block"
     let k = 1;
 
     const onFocus =()=>isFocused=true;
@@ -40,10 +40,11 @@ import { each } from "svelte/internal";
         date = ""
         time = ""
         persons = ""
-        table = ""
+        table = []
     }
 
     function changeReservation(id) {
+        tables = reservations[id].table
         var input = document.getElementById(id);
         input.style.display = "none"
         var output = document.getElementById(-id);
@@ -55,6 +56,7 @@ import { each } from "svelte/internal";
         input.style.display = "block"
         var output = document.getElementById(-id);
         output.style.display= "none"
+        tables = []
     }
 
     function deleteReservation(id) {
@@ -151,7 +153,7 @@ import { each } from "svelte/internal";
     
 
     <div class="column" style="border: solid;">
-        <TableArea isStaff=1 />
+        <TableArea isStaff=1 selectedIds={tables}/>
     </div>
 </div>
 
