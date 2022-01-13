@@ -37,7 +37,12 @@
         position: absolute;
         z-index: -10;
     }
-
+    .free{
+        cursor: pointer;
+    }
+    .reserved{
+        cursor: not-allowed;
+    }
 </style>
 
 <script>
@@ -197,7 +202,7 @@
          {#each row as pos}
               <div id="gridField_{getFieldId()}" class="field has-addons has-addons-centered table_field" on:dragover={allowDrop} on:drop={dropHandler}>
                   {#if pos != null}
-                  <div on:drag={dragHandler} id="table_{pos.id}" class="field has-addons has-addons-centered table" draggable="{pos.reservId==null}" on:click="{() => tableClicked(pos)}">
+                  <div on:drag={dragHandler} id="table_{pos.id}" class="field has-addons has-addons-centered table {pos.reservId==null?"free":"reserved"}" draggable="{pos.reservId==null}"  on:click="{() => tableClicked(pos)}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="238.451 191.51 29.71 55.2" width="29.71" height="55.2">
                         <rect x="241.704" y="191.51" width="22.781" height="16.577" style="fill: {pos.reservId==null?(selectedIds.indexOf(pos.id)!=-1?"orange":"green"):"red"}; stroke: rgb(0, 0, 0);"/>
                         <rect x="241.999" y="230.133" width="22.781" height="16.577" style="fill: {pos.reservId==null?(selectedIds.indexOf(pos.id)!=-1?"orange":"green"):"red"}; stroke: rgb(0, 0, 0);"/>
