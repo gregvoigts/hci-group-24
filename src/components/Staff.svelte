@@ -4,6 +4,7 @@ import { each } from "svelte/internal";
     import TableArea from "./TableArea.svelte";
 
     $: reservations = [
+        {id: 0, name: "Santa", date: "24.12.2021", time: "13:00", persons: 4, table: 4},
         {id: 1, name: "Santa", date: "24.12.2021", time: "13:00", persons: 4, table: 4},
         {id: 2, name: "Bert", date: "24.12.2021", time: "13:00", persons: 4, table: 4},
         {id: 3, name: "Klaus", date: "24.12.2021", time: "13:00", persons: 4, table: 4},
@@ -57,6 +58,8 @@ import { each } from "svelte/internal";
     }
 
     function deleteReservation(id) {
+        console.log(reservations)
+        console.log(id - 1)
         reservations.splice(id - 1, 1)
         reservations = reservations
         for (let index = 0; index < reservations.length; index++) {
@@ -86,35 +89,33 @@ import { each } from "svelte/internal";
         <div style="overflow: hidden; overflow-y: scroll">
             <ul class="p-2" style="height: 648px">
                 {#each reservations as res}
+                {#if res.id != 0}
+                
                 <li>
                     <div class="message mb-2">
                         <div id={res.id}>
                             <div class="message-header" 
-                            style="display: {changeOutput};"
-                            on:focus={onFocus} 
-                            on:blur={onBlur} 
-                            on:click={changeReservation(res.id)} 
-                            on:mouseover={hover(res.id)} 
-                            on:mouseout={hoverNot(res.id)}
-                        >    
-                            {res.name}
+                                id={res.id + 10}
+                                on:focus={onFocus} 
+                                on:blur={onBlur} 
+                                on:click={changeReservation(res.id)} 
+                                on:mouseover={hover(res.id + 10)} 
+                                on:mouseout={hoverNot(res.id + 10)}
+                            >    
+                                {res.name}
+                            </div>
+                        
+                            <div class="message-body" style="font-size: 15pt;">
+                                {res.date}
+                                {res.time}
+                                {res.persons}
+                            </div> 
                         </div>
                         
-                        <div class="message-body" style="font-size: 15pt;">
-                            {res.date}
-                            {res.time}
-                            {res.persons}
-                        </div> 
-                    </div>
-                        
-                    <div id={-res.id} style="display: none">
-                        <div  class="message-header" 
-                            on:focus={onFocus} 
-                            on:blur={onBlur} 
-                            on:click={changeReservation(res.id)} 
-                            on:mouseover={hover(res.id)} 
-                            on:mouseout={hoverNot(res.id)}
-                        >
+                        <div id={-res.id} style="display: none">
+                            <div  class="message-header" 
+                                on:click={changeReservation(res.id)} 
+                            >
                             <input bind:value={res.name} placeholder="Name">
                         </div>
                         
@@ -129,6 +130,7 @@ import { each } from "svelte/internal";
                         
                     </div>
                 </li>
+                {/if}
                 {/each}
                 <div id=input class="message mb-2" style="display: none;">
                     <div class="message-header">

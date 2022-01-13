@@ -2,10 +2,9 @@
     import TableArea from "./TableArea.svelte";
     import Reservation from "./Reservation.svelte";
     import Menu from "./Menu.svelte";
-    import Staff from "./Staff-scaffold.svelte"
     
 
-    let showContent = 'staff';
+    let showContent = 'reservation';
 </script>
 
 <div class="tabs is-centered is-medium is-boxed">
@@ -14,8 +13,6 @@
         <li class:is-active="{showContent == 'reservation'}"><a on:click="{() => showContent='reservation'}">Reservierung</a></li>
         <!-- svelte-ignore a11y-missing-attribute -->
         <li class:is-active="{showContent == 'menu'}"><a on:click="{() => showContent='menu'}">Speisekarte</a></li>
-        <!-- svelte-ignore a11y-missing-attribute -->
-        <li class:is-active="{showContent == 'staff'}"><a on:click="{() => showContent='staff'}">Staff</a></li>
     </ul>
 </div>
 <div id="tab-content">
@@ -23,6 +20,13 @@
     <div class="columns">
         <div class="column is-half">
             <Reservation/>   
+            <div class="columns p-4 ">
+                <div class="column">
+                    <button class="button is-primary" on:click="{() => alert('Vielen Dank für Ihre Reservierung, wir haben Ihre Daten erhalten!\nSie haben eine Bestätigung per E-Mail erhalten.')}">
+                        <span>reservieren</span>
+                    </button>
+                </div>
+            </div>
         </div>
         <div class="column">
             <TableArea isStaff=0/>
@@ -30,8 +34,6 @@
     </div>
     {:else if showContent == 'menu'}
     <Menu/>
-    {:else if showContent == 'staff'}  
-        <Staff/>
     {/if}
 </div>
 
