@@ -1,18 +1,25 @@
 <style>
     .table_area{
-        padding: 3vh 3vw;
-        height: 75vw;
+        overflow: hidden;
+        display: block;
+        height:38.5vw ;
+        padding: 11px 14px;
     }
     .area_column{
         padding: 0;
         margin: 0 !important;
+        height: 6.66%;
+        overflow: hidden;
     }
     .table_field{
         padding: 0;
         margin: 0 !important;
-        width: 14vw;
-        height: 7vh;
-        border-width: 0.5px;
+        display: block;
+        min-width: 5%;
+        max-width: 5%;
+        overflow: hidden;
+        height: 100%;
+        border-width: 0.1px;
         border-color: lightgray;
         border-style: dashed;
     }
@@ -26,6 +33,7 @@
         height: 100%;
     }
     img{
+        width: 49vw;
         position: absolute;
         z-index: -10;
     }
@@ -64,10 +72,6 @@
         }
 
         if(coords[0]<=9 && coords[1] == 8){
-            return;
-        }
-
-        if(coords[0] == 9){
             return;
         }
         if(grid[coords[0]][coords[1]] == null){
@@ -165,6 +169,23 @@
         girdFieldId++;
         return id;
     }
+    let selectedIds = [];
+    let selectedListSize = 0;
+    function tableClicked(tab){
+        if(tab.reservId != null){
+            return;
+        }
+        let id = tab.id;
+        let index = selectedIds.indexOf(id);
+        if(index == -1){
+            selectedIds[selectedListSize++] = id;
+        }
+        else{
+            selectedIds.splice(index,1);
+            --selectedListSize;
+            selectedIds = selectedIds;
+        }
+    }
 </script>
 
 <!--Container for Grid view. Create a div for each posible position. If table is present add table*/-->
@@ -176,19 +197,13 @@
          {#each row as pos}
               <div id="gridField_{getFieldId()}" class="field has-addons has-addons-centered table_field" on:dragover={allowDrop} on:drop={dropHandler}>
                   {#if pos != null}
-                  <div on:drag={dragHandler} id="table_{pos.id}" class="field has-addons has-addons-centered table" draggable="true">
-                    <svg width="380" height="532" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" overflow="hidden" viewBox="0 0 100 100" >
-                        <defs>
-                            <clipPath id="clip0">
-                                <rect x="450" y="49" width="380" height="532"/>
-                            </clipPath>
-                        </defs>
-                        <g clip-path="url(#clip0)" transform="translate(-450 -49)">
-                            <rect x="451.5" y="126.5" width="378" height="378" stroke="#A58763" stroke-width="1.33333" stroke-miterlimit="8" fill="#A58763"/>
-                            <rect x="530.5" y="504.5" width="220" height="76" stroke="#927676" stroke-width="1.33333" stroke-miterlimit="8" fill="#927676"/>
-                            <rect x="530.5" y="51.5001" width="220" height="75" stroke="#927676" stroke-width="1.33333" stroke-miterlimit="8" fill="#927676"/>
-                        </g>
-                    </svg>
+                  <div on:drag={dragHandler} id="table_{pos.id}" class="field has-addons has-addons-centered table" draggable="true" on:click="{() => tableClicked(pos)}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="238.451 191.51 29.71 55.2" width="29.71" height="55.2">
+                        <rect x="241.704" y="191.51" width="22.781" height="16.577" style="fill: {pos.reservId==null?(selectedIds.indexOf(pos.id)!=-1?"orange":"green"):"red"}; stroke: rgb(0, 0, 0);"/>
+                        <rect x="241.999" y="230.133" width="22.781" height="16.577" style="fill: {pos.reservId==null?(selectedIds.indexOf(pos.id)!=-1?"orange":"green"):"red"}; stroke: rgb(0, 0, 0);"/>
+                        <rect x="238.451" y="201.997" width="29.71" height="34.579" style="fill: {pos.reservId==null?(selectedIds.indexOf(pos.id)!=-1?"orange":"green"):"red"}; stroke: rgb(0, 0, 0);"/>
+                        <text xmlns="http://www.w3.org/2000/svg" style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 11px; font-weight: 700; text-anchor: middle; white-space: pre;" transform="matrix(2.024701, 0, 0, 1.510878, -248.931961, -104.71032)" x="247.903" y="218.044">{pos.id}</text>
+                      </svg>
                 </div>
                   {/if}
               </div>
