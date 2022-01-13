@@ -17,7 +17,7 @@
 <footer class="footer">
     <div class="content has-text-centered">
         <p class="has-text-weight-light">Santas Reindeers</p>
-        
+        <p class="has-text-weight-light">Tel.: +299 123456</p>
     </div>
 </footer>
 
