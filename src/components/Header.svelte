@@ -33,8 +33,6 @@
 </header>
 
 <style lang="scss">
-    @import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
-
     .navbar {
         background: #fafafa;
     }
