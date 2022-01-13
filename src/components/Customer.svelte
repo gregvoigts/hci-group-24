@@ -20,17 +20,16 @@
     <div class="columns">
         <div class="column is-half">
             <Reservation/>   
-            
+            <div class="column">
+                <div class="buttons is-right">
+                    <button class="button is-primary" on:click="{() => showContent='menu'}">
+                        <span>Weiter</span>
+                    </button>
+                </div>
+            </div>
         </div>
         <div class="column is-half">
             <TableArea isStaff=0/>
-        </div>
-    </div>
-    <div class="column">
-        <div class="buttons is-right">
-            <button class="button is-primary" on:click="{() => showContent='menu'}">
-                <span>Weiter</span>
-            </button>
         </div>
     </div>
 
