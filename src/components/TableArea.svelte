@@ -3,7 +3,7 @@
         overflow: hidden;
         display: block;
         height:38.5vw ;
-        padding: 11px 14px;
+        padding: 2vh 1.3vw;
     }
     .area_column{
         padding: 0;
@@ -71,7 +71,7 @@
             return;
         }
 
-        if(coords[0]<=9 && coords[1] == 8){
+        if(coords[0]<=8 && coords[1] == 8){
             return;
         }
         if(grid[coords[0]][coords[1]] == null){
@@ -197,7 +197,7 @@
          {#each row as pos}
               <div id="gridField_{getFieldId()}" class="field has-addons has-addons-centered table_field" on:dragover={allowDrop} on:drop={dropHandler}>
                   {#if pos != null}
-                  <div on:drag={dragHandler} id="table_{pos.id}" class="field has-addons has-addons-centered table" draggable="true" on:click="{() => tableClicked(pos)}">
+                  <div on:drag={dragHandler} id="table_{pos.id}" class="field has-addons has-addons-centered table" draggable="{pos.reservId==null}" on:click="{() => tableClicked(pos)}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="238.451 191.51 29.71 55.2" width="29.71" height="55.2">
                         <rect x="241.704" y="191.51" width="22.781" height="16.577" style="fill: {pos.reservId==null?(selectedIds.indexOf(pos.id)!=-1?"orange":"green"):"red"}; stroke: rgb(0, 0, 0);"/>
                         <rect x="241.999" y="230.133" width="22.781" height="16.577" style="fill: {pos.reservId==null?(selectedIds.indexOf(pos.id)!=-1?"orange":"green"):"red"}; stroke: rgb(0, 0, 0);"/>
