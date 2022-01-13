@@ -197,7 +197,7 @@
 
 <!--Container for Grid view. Create a div for each posible position. If table is present add table*/-->
 <div class="field">
-    <img src="/restaurant.png" alt="restaurant">
+    <img src="./restaurant.png" alt="restaurant">
 <div class="field table_area">    
     {#each grid as row}
         <div class="field is-horizontal area_column">
