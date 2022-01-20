@@ -38,6 +38,11 @@
                 class:field-success={$validity.valid}
                 use:validate={email}
             >
+            {#if $validity.dirty && !$validity.valid}
+                <span class="validation-hint">
+                    INVALID - {$validity.message} {$validity.dirty}
+                </span>
+            {/if}
         </div>
         <div class="column">
             <p>Telefonnummer</p>
@@ -64,7 +69,10 @@
 		border-width: 2px;
 	}
 	
-	
+	.validation-hint {
+		color: red;
+		padding: 6px 0;
+	}
 	
 	.field-danger {
 		border-color: red;
