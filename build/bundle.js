@@ -1829,7 +1829,7 @@ var app = (function () {
     const file$7 = "src\\components\\Reservation.svelte";
 
     // (41:12) {#if $validity.dirty && !$validity.valid}
-    function create_if_block$3(ctx) {
+    function create_if_block_1$1(ctx) {
     	let span;
     	let t0;
     	let t1_value = /*$validity*/ ctx[7].message + "";
@@ -1858,9 +1858,48 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$3.name,
+    		id: create_if_block_1$1.name,
     		type: "if",
     		source: "(41:12) {#if $validity.dirty && !$validity.valid}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (54:12) {#if $telvalidity.dirty && !$telvalidity.valid}
+    function create_if_block$3(ctx) {
+    	let span;
+    	let t0;
+    	let t1_value = /*$telvalidity*/ ctx[8].message + "";
+    	let t1;
+
+    	const block = {
+    		c: function create() {
+    			span = element("span");
+    			t0 = text("INVALID - ");
+    			t1 = text(t1_value);
+    			attr_dev(span, "class", "validation-hint svelte-13bmutu");
+    			add_location(span, file$7, 54, 16, 2055);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, span, anchor);
+    			append_dev(span, t0);
+    			append_dev(span, t1);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*$telvalidity*/ 256 && t1_value !== (t1_value = /*$telvalidity*/ ctx[8].message + "")) set_data_dev(t1, t1_value);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(span);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$3.name,
+    		type: "if",
+    		source: "(54:12) {#if $telvalidity.dirty && !$telvalidity.valid}",
     		ctx
     	});
 
@@ -1904,14 +1943,16 @@ var app = (function () {
     	let input5;
     	let telvalidate_action;
     	let t18;
+    	let t19;
     	let div9;
     	let div8;
     	let p6;
-    	let t20;
+    	let t21;
     	let textarea;
     	let mounted;
     	let dispose;
-    	let if_block = /*$validity*/ ctx[7].dirty && !/*$validity*/ ctx[7].valid && create_if_block$3(ctx);
+    	let if_block0 = /*$validity*/ ctx[7].dirty && !/*$validity*/ ctx[7].valid && create_if_block_1$1(ctx);
+    	let if_block1 = /*$telvalidity*/ ctx[8].dirty && !/*$telvalidity*/ ctx[8].valid && create_if_block$3(ctx);
 
     	const block = {
     		c: function create() {
@@ -1948,7 +1989,7 @@ var app = (function () {
     			t13 = space();
     			input4 = element("input");
     			t14 = space();
-    			if (if_block) if_block.c();
+    			if (if_block0) if_block0.c();
     			t15 = space();
     			div6 = element("div");
     			p5 = element("p");
@@ -1956,11 +1997,13 @@ var app = (function () {
     			t17 = space();
     			input5 = element("input");
     			t18 = space();
+    			if (if_block1) if_block1.c();
+    			t19 = space();
     			div9 = element("div");
     			div8 = element("div");
     			p6 = element("p");
     			p6.textContent = "Besondere Wünsche:";
-    			t20 = space();
+    			t21 = space();
     			textarea = element("textarea");
     			add_location(p0, file$7, 15, 12, 390);
     			attr_dev(input0, "class", "input is-primary svelte-13bmutu");
@@ -2012,14 +2055,14 @@ var app = (function () {
     			add_location(div6, file$7, 46, 8, 1653);
     			attr_dev(div7, "class", "columns");
     			add_location(div7, file$7, 28, 4, 892);
-    			add_location(p6, file$7, 57, 12, 2075);
+    			add_location(p6, file$7, 62, 12, 2283);
     			attr_dev(textarea, "class", "textarea is-primary");
     			attr_dev(textarea, "placeholder", "Tisch in Nähe von Spielecke");
-    			add_location(textarea, file$7, 58, 12, 2114);
+    			add_location(textarea, file$7, 63, 12, 2322);
     			attr_dev(div8, "class", "column");
-    			add_location(div8, file$7, 56, 8, 2041);
+    			add_location(div8, file$7, 61, 8, 2249);
     			attr_dev(div9, "class", "columns");
-    			add_location(div9, file$7, 55, 4, 2010);
+    			add_location(div9, file$7, 60, 4, 2218);
     			attr_dev(div10, "class", "p-4 control");
     			add_location(div10, file$7, 12, 0, 293);
     		},
@@ -2060,18 +2103,20 @@ var app = (function () {
     			append_dev(div5, input4);
     			set_input_value(input4, /*email*/ ctx[4]);
     			append_dev(div5, t14);
-    			if (if_block) if_block.m(div5, null);
+    			if (if_block0) if_block0.m(div5, null);
     			append_dev(div7, t15);
     			append_dev(div7, div6);
     			append_dev(div6, p5);
     			append_dev(div6, t17);
     			append_dev(div6, input5);
     			set_input_value(input5, /*tel*/ ctx[6]);
-    			append_dev(div10, t18);
+    			append_dev(div6, t18);
+    			if (if_block1) if_block1.m(div6, null);
+    			append_dev(div10, t19);
     			append_dev(div10, div9);
     			append_dev(div9, div8);
     			append_dev(div8, p6);
-    			append_dev(div8, t20);
+    			append_dev(div8, t21);
     			append_dev(div8, textarea);
     			set_input_value(textarea, /*wishes*/ ctx[5]);
 
@@ -2123,16 +2168,16 @@ var app = (function () {
     			}
 
     			if (/*$validity*/ ctx[7].dirty && !/*$validity*/ ctx[7].valid) {
-    				if (if_block) {
-    					if_block.p(ctx, dirty);
+    				if (if_block0) {
+    					if_block0.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block$3(ctx);
-    					if_block.c();
-    					if_block.m(div5, null);
+    					if_block0 = create_if_block_1$1(ctx);
+    					if_block0.c();
+    					if_block0.m(div5, null);
     				}
-    			} else if (if_block) {
-    				if_block.d(1);
-    				if_block = null;
+    			} else if (if_block0) {
+    				if_block0.d(1);
+    				if_block0 = null;
     			}
 
     			if (dirty & /*tel*/ 64) {
@@ -2149,6 +2194,19 @@ var app = (function () {
     				toggle_class(input5, "field-success", /*$telvalidity*/ ctx[8].valid);
     			}
 
+    			if (/*$telvalidity*/ ctx[8].dirty && !/*$telvalidity*/ ctx[8].valid) {
+    				if (if_block1) {
+    					if_block1.p(ctx, dirty);
+    				} else {
+    					if_block1 = create_if_block$3(ctx);
+    					if_block1.c();
+    					if_block1.m(div6, null);
+    				}
+    			} else if (if_block1) {
+    				if_block1.d(1);
+    				if_block1 = null;
+    			}
+
     			if (dirty & /*wishes*/ 32) {
     				set_input_value(textarea, /*wishes*/ ctx[5]);
     			}
@@ -2157,7 +2215,8 @@ var app = (function () {
     		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div10);
-    			if (if_block) if_block.d();
+    			if (if_block0) if_block0.d();
+    			if (if_block1) if_block1.d();
     			mounted = false;
     			run_all(dispose);
     		}
