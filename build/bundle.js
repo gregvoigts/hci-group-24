@@ -146,6 +146,9 @@ var app = (function () {
         else if (node.getAttribute(attribute) !== value)
             node.setAttribute(attribute, value);
     }
+    function to_number(value) {
+        return value === '' ? null : +value;
+    }
     function children(element) {
         return Array.from(element.childNodes);
     }
@@ -1851,58 +1854,58 @@ var app = (function () {
     			textarea = element("textarea");
     			add_location(p0, file$7, 12, 12, 275);
     			attr_dev(input0, "class", "input is-primary");
-    			attr_dev(input0, "type", "text");
+    			attr_dev(input0, "type", "date");
     			attr_dev(input0, "placeholder", "24.12.2022");
     			add_location(input0, file$7, 13, 12, 300);
     			attr_dev(div0, "class", "column");
     			add_location(div0, file$7, 11, 8, 241);
     			add_location(p1, file$7, 16, 12, 444);
     			attr_dev(input1, "class", "input is-primary");
-    			attr_dev(input1, "type", "text");
+    			attr_dev(input1, "type", "time");
     			attr_dev(input1, "placeholder", "16:00");
     			add_location(input1, file$7, 17, 12, 471);
     			attr_dev(div1, "class", "column");
     			add_location(div1, file$7, 15, 8, 411);
     			add_location(p2, file$7, 20, 12, 610);
     			attr_dev(input2, "class", "input is-primary");
-    			attr_dev(input2, "type", "text");
+    			attr_dev(input2, "type", "number");
     			attr_dev(input2, "placeholder", "4");
     			add_location(input2, file$7, 21, 12, 645);
     			attr_dev(div2, "class", "column");
     			add_location(div2, file$7, 19, 8, 577);
     			attr_dev(div3, "class", "columns");
     			add_location(div3, file$7, 10, 4, 211);
-    			add_location(p3, file$7, 27, 12, 825);
+    			add_location(p3, file$7, 27, 12, 827);
     			attr_dev(input3, "class", "input is-primary");
     			attr_dev(input3, "type", "text");
     			attr_dev(input3, "placeholder", "Santa Claus");
-    			add_location(input3, file$7, 28, 12, 849);
+    			add_location(input3, file$7, 28, 12, 851);
     			attr_dev(div4, "class", "column");
-    			add_location(div4, file$7, 26, 8, 792);
-    			add_location(p4, file$7, 31, 12, 994);
+    			add_location(div4, file$7, 26, 8, 794);
+    			add_location(p4, file$7, 31, 12, 996);
     			attr_dev(input4, "class", "input is-primary");
     			attr_dev(input4, "type", "email");
     			attr_dev(input4, "placeholder", "santas.reindeers@christmas.com");
-    			add_location(input4, file$7, 32, 12, 1020);
+    			add_location(input4, file$7, 32, 12, 1022);
     			attr_dev(div5, "class", "column");
-    			add_location(div5, file$7, 30, 8, 961);
-    			add_location(p5, file$7, 35, 12, 1186);
+    			add_location(div5, file$7, 30, 8, 963);
+    			add_location(p5, file$7, 35, 12, 1188);
     			attr_dev(input5, "class", "input is-primary");
     			attr_dev(input5, "type", "tel");
     			attr_dev(input5, "placeholder", "0511 237475");
-    			add_location(input5, file$7, 36, 12, 1219);
+    			add_location(input5, file$7, 36, 12, 1221);
     			attr_dev(div6, "class", "column");
-    			add_location(div6, file$7, 34, 8, 1153);
+    			add_location(div6, file$7, 34, 8, 1155);
     			attr_dev(div7, "class", "columns");
-    			add_location(div7, file$7, 25, 4, 762);
-    			add_location(p6, file$7, 41, 12, 1399);
+    			add_location(div7, file$7, 25, 4, 764);
+    			add_location(p6, file$7, 41, 12, 1401);
     			attr_dev(textarea, "class", "textarea is-primary");
     			attr_dev(textarea, "placeholder", "Tisch in Nähe von Spielecke");
-    			add_location(textarea, file$7, 42, 12, 1437);
+    			add_location(textarea, file$7, 42, 12, 1439);
     			attr_dev(div8, "class", "column");
-    			add_location(div8, file$7, 40, 8, 1366);
+    			add_location(div8, file$7, 40, 8, 1368);
     			attr_dev(div9, "class", "columns");
-    			add_location(div9, file$7, 39, 4, 1336);
+    			add_location(div9, file$7, 39, 4, 1338);
     			attr_dev(div10, "class", "p-4 control");
     			add_location(div10, file$7, 9, 0, 181);
     		},
@@ -1971,15 +1974,15 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*date*/ 1 && input0.value !== /*date*/ ctx[0]) {
+    			if (dirty & /*date*/ 1) {
     				set_input_value(input0, /*date*/ ctx[0]);
     			}
 
-    			if (dirty & /*time*/ 2 && input1.value !== /*time*/ ctx[1]) {
+    			if (dirty & /*time*/ 2) {
     				set_input_value(input1, /*time*/ ctx[1]);
     			}
 
-    			if (dirty & /*persons*/ 4 && input2.value !== /*persons*/ ctx[2]) {
+    			if (dirty & /*persons*/ 4 && to_number(input2.value) !== /*persons*/ ctx[2]) {
     				set_input_value(input2, /*persons*/ ctx[2]);
     			}
 
@@ -2045,7 +2048,7 @@ var app = (function () {
     	}
 
     	function input2_input_handler() {
-    		persons = this.value;
+    		persons = to_number(this.value);
     		$$invalidate(2, persons);
     	}
 
