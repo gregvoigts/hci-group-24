@@ -51,6 +51,11 @@
                 class:field-success={$telvalidity.valid}
                 use:telvalidate={tel}
             >
+            {#if $telvalidity.dirty && !$telvalidity.valid}
+                <span class="validation-hint">
+                    INVALID - {$telvalidity.message} 
+                </span>
+            {/if}
         </div>
     </div>
     <div class="columns">
