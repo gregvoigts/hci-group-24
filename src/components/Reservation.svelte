@@ -64,7 +64,7 @@
         </div>
         <div class="column">
             <p>Telefonnummer</p>
-            <input bind:value={tel} class="input is-primary" type="tel" placeholder="0511 237475"                
+            <input bind:value={tel} class="input" type="tel" placeholder="0511 237475"                
                 class:is-success={$telvalidity.valid}
                 use:telvalidate={tel}
             >

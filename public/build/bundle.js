@@ -1880,7 +1880,7 @@ var app = (function () {
     			t0 = text("INVALID - ");
     			t1 = text(t1_value);
     			attr_dev(span, "class", "validation-hint svelte-13bmutu");
-    			add_location(span, file$7, 71, 16, 2556);
+    			add_location(span, file$7, 71, 16, 2545);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, span, anchor);
@@ -2053,7 +2053,7 @@ var app = (function () {
     			attr_dev(div5, "class", "column");
     			add_location(div5, file$7, 51, 8, 1679);
     			add_location(p5, file$7, 65, 12, 2239);
-    			attr_dev(input5, "class", "input is-primary svelte-13bmutu");
+    			attr_dev(input5, "class", "input svelte-13bmutu");
     			attr_dev(input5, "type", "tel");
     			attr_dev(input5, "placeholder", "0511 237475");
     			toggle_class(input5, "is-success", /*$telvalidity*/ ctx[12].valid);
@@ -2062,14 +2062,14 @@ var app = (function () {
     			add_location(div6, file$7, 64, 8, 2206);
     			attr_dev(div7, "class", "columns");
     			add_location(div7, file$7, 43, 4, 1383);
-    			add_location(p6, file$7, 79, 12, 2776);
+    			add_location(p6, file$7, 79, 12, 2765);
     			attr_dev(textarea, "class", "textarea");
     			attr_dev(textarea, "placeholder", "Tisch in Nähe von Spielecke");
-    			add_location(textarea, file$7, 80, 12, 2814);
+    			add_location(textarea, file$7, 80, 12, 2803);
     			attr_dev(div8, "class", "column");
-    			add_location(div8, file$7, 78, 8, 2743);
+    			add_location(div8, file$7, 78, 8, 2732);
     			attr_dev(div9, "class", "columns");
-    			add_location(div9, file$7, 77, 4, 2713);
+    			add_location(div9, file$7, 77, 4, 2702);
     			attr_dev(div10, "class", "p-4 control");
     			add_location(div10, file$7, 18, 0, 504);
     		},
