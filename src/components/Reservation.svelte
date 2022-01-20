@@ -40,7 +40,7 @@
             >
             {#if $validity.dirty && !$validity.valid}
                 <span class="validation-hint">
-                    INVALID - {$validity.message} {$validity.dirty}
+                    INVALID - {$validity.message} 
                 </span>
             {/if}
         </div>
