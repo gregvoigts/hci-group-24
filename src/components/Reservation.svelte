@@ -11,15 +11,15 @@
     <div class="columns">
         <div class="column" >
             <p>Datum</p>
-            <input bind:value={date} class="input is-primary" type="text" placeholder="24.12.2022">
+            <input bind:value={date} class="input is-primary" type="date" placeholder="24.12.2022">
         </div>
         <div class="column">
             <p>Uhrzeit</p>
-            <input bind:value={time} class="input is-primary" type="text" placeholder="16:00">
+            <input bind:value={time} class="input is-primary" type="time" placeholder="16:00">
         </div>
         <div class="column">
             <p>Anzahl Personen</p>
-            <input bind:value={persons} class="input is-primary" type="text" placeholder="4">
+            <input bind:value={persons} class="input is-primary" type="number" placeholder="4">
         </div>
     </div>
     
