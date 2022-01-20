@@ -5,6 +5,9 @@
     export let name = '';
     export let email = '';
     let wishes, tel;
+    
+    
+    import  {validate, validity} from "../store/Navigation.js";
 </script>
 
 <div class="p-4 control">
@@ -30,7 +33,11 @@
         </div>
         <div class="column">
             <p>E-Mail</p>
-            <input bind:value={email} class="input is-primary" type="email" placeholder="santas.reindeers@christmas.com">
+            <input bind:value={email} class="input is-primary" type="email" placeholder="santas.reindeers@christmas.com"
+                class:field-danger={!$validity.valid}
+                class:field-success={$validity.valid}
+                use:validate={email}
+            >
         </div>
         <div class="column">
             <p>Telefonnummer</p>
@@ -44,3 +51,26 @@
         </div>
     </div>
 </div>
+
+<style>
+
+	:global(body) {
+		display: flex;
+		flex-direction: column;
+	}
+	
+	input {
+		outline: none;
+		border-width: 2px;
+	}
+	
+	
+	
+	.field-danger {
+		border-color: red;
+	}
+	
+	.field-success {
+		border-color: green;
+	}
+</style>
