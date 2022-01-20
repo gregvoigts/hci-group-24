@@ -181,6 +181,9 @@ var app = (function () {
     function add_render_callback(fn) {
         render_callbacks.push(fn);
     }
+    function add_flush_callback(fn) {
+        flush_callbacks.push(fn);
+    }
     // flush() calls callbacks in this order:
     // 1. All beforeUpdate callbacks, in order: parents before children
     // 2. All bind:this callbacks, in reverse order: children before parents.
@@ -296,6 +299,14 @@ var app = (function () {
             str += fn(items[i], i);
         }
         return str;
+    }
+
+    function bind(component, name, callback) {
+        const index = component.$$.props[name];
+        if (index !== undefined) {
+            component.$$.bound[index] = callback;
+            callback(component.$$.ctx[index]);
+        }
     }
     function create_component(block) {
         block && block.c();
@@ -460,6 +471,10 @@ var app = (function () {
             dispatch_dev('SvelteDOMRemoveAttribute', { node, attribute });
         else
             dispatch_dev('SvelteDOMSetAttribute', { node, attribute, value });
+    }
+    function prop_dev(node, property, value) {
+        node[property] = value;
+        dispatch_dev('SvelteDOMSetProperty', { node, property, value });
     }
     function set_data_dev(text, data) {
         data = '' + data;
@@ -1818,13 +1833,13 @@ var app = (function () {
     			t11 = space();
     			div5 = element("div");
     			p4 = element("p");
-    			p4.textContent = "Telefonnummer";
+    			p4.textContent = "E-Mail";
     			t13 = space();
     			input4 = element("input");
     			t14 = space();
     			div6 = element("div");
     			p5 = element("p");
-    			p5.textContent = "E-Mail";
+    			p5.textContent = "Telefonnummer";
     			t16 = space();
     			input5 = element("input");
     			t17 = space();
@@ -1834,62 +1849,62 @@ var app = (function () {
     			p6.textContent = "Besondere Wünsche:";
     			t19 = space();
     			textarea = element("textarea");
-    			add_location(p0, file$7, 7, 12, 169);
+    			add_location(p0, file$7, 12, 12, 275);
     			attr_dev(input0, "class", "input is-primary");
     			attr_dev(input0, "type", "text");
     			attr_dev(input0, "placeholder", "24.12.2022");
-    			add_location(input0, file$7, 8, 12, 194);
+    			add_location(input0, file$7, 13, 12, 300);
     			attr_dev(div0, "class", "column");
-    			add_location(div0, file$7, 6, 8, 135);
-    			add_location(p1, file$7, 11, 12, 338);
+    			add_location(div0, file$7, 11, 8, 241);
+    			add_location(p1, file$7, 16, 12, 444);
     			attr_dev(input1, "class", "input is-primary");
     			attr_dev(input1, "type", "text");
     			attr_dev(input1, "placeholder", "16:00");
-    			add_location(input1, file$7, 12, 12, 365);
+    			add_location(input1, file$7, 17, 12, 471);
     			attr_dev(div1, "class", "column");
-    			add_location(div1, file$7, 10, 8, 305);
-    			add_location(p2, file$7, 15, 12, 504);
+    			add_location(div1, file$7, 15, 8, 411);
+    			add_location(p2, file$7, 20, 12, 610);
     			attr_dev(input2, "class", "input is-primary");
     			attr_dev(input2, "type", "text");
     			attr_dev(input2, "placeholder", "4");
-    			add_location(input2, file$7, 16, 12, 539);
+    			add_location(input2, file$7, 21, 12, 645);
     			attr_dev(div2, "class", "column");
-    			add_location(div2, file$7, 14, 8, 471);
+    			add_location(div2, file$7, 19, 8, 577);
     			attr_dev(div3, "class", "columns");
-    			add_location(div3, file$7, 5, 4, 105);
-    			add_location(p3, file$7, 22, 12, 719);
+    			add_location(div3, file$7, 10, 4, 211);
+    			add_location(p3, file$7, 27, 12, 825);
     			attr_dev(input3, "class", "input is-primary");
     			attr_dev(input3, "type", "text");
     			attr_dev(input3, "placeholder", "Santa Claus");
-    			add_location(input3, file$7, 23, 12, 743);
+    			add_location(input3, file$7, 28, 12, 849);
     			attr_dev(div4, "class", "column");
-    			add_location(div4, file$7, 21, 8, 686);
-    			add_location(p4, file$7, 26, 12, 888);
+    			add_location(div4, file$7, 26, 8, 792);
+    			add_location(p4, file$7, 31, 12, 994);
     			attr_dev(input4, "class", "input is-primary");
-    			attr_dev(input4, "type", "tel");
-    			attr_dev(input4, "placeholder", "0511 237475");
-    			add_location(input4, file$7, 27, 12, 921);
+    			attr_dev(input4, "type", "email");
+    			attr_dev(input4, "placeholder", "santas.reindeers@christmas.com");
+    			add_location(input4, file$7, 32, 12, 1020);
     			attr_dev(div5, "class", "column");
-    			add_location(div5, file$7, 25, 8, 855);
-    			add_location(p5, file$7, 30, 12, 1064);
+    			add_location(div5, file$7, 30, 8, 961);
+    			add_location(p5, file$7, 35, 12, 1186);
     			attr_dev(input5, "class", "input is-primary");
-    			attr_dev(input5, "type", "email");
-    			attr_dev(input5, "placeholder", "santas.reindeers@christmas.com");
-    			add_location(input5, file$7, 31, 12, 1090);
+    			attr_dev(input5, "type", "tel");
+    			attr_dev(input5, "placeholder", "0511 237475");
+    			add_location(input5, file$7, 36, 12, 1219);
     			attr_dev(div6, "class", "column");
-    			add_location(div6, file$7, 29, 8, 1031);
+    			add_location(div6, file$7, 34, 8, 1153);
     			attr_dev(div7, "class", "columns");
-    			add_location(div7, file$7, 20, 4, 656);
-    			add_location(p6, file$7, 36, 12, 1293);
+    			add_location(div7, file$7, 25, 4, 762);
+    			add_location(p6, file$7, 41, 12, 1399);
     			attr_dev(textarea, "class", "textarea is-primary");
     			attr_dev(textarea, "placeholder", "Tisch in Nähe von Spielecke");
-    			add_location(textarea, file$7, 37, 12, 1331);
+    			add_location(textarea, file$7, 42, 12, 1437);
     			attr_dev(div8, "class", "column");
-    			add_location(div8, file$7, 35, 8, 1260);
+    			add_location(div8, file$7, 40, 8, 1366);
     			attr_dev(div9, "class", "columns");
-    			add_location(div9, file$7, 34, 4, 1230);
+    			add_location(div9, file$7, 39, 4, 1336);
     			attr_dev(div10, "class", "p-4 control");
-    			add_location(div10, file$7, 4, 0, 75);
+    			add_location(div10, file$7, 9, 0, 181);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1926,20 +1941,20 @@ var app = (function () {
     			append_dev(div5, p4);
     			append_dev(div5, t13);
     			append_dev(div5, input4);
-    			set_input_value(input4, /*tel*/ ctx[4]);
+    			set_input_value(input4, /*email*/ ctx[4]);
     			append_dev(div7, t14);
     			append_dev(div7, div6);
     			append_dev(div6, p5);
     			append_dev(div6, t16);
     			append_dev(div6, input5);
-    			set_input_value(input5, /*email*/ ctx[5]);
+    			set_input_value(input5, /*tel*/ ctx[6]);
     			append_dev(div10, t17);
     			append_dev(div10, div9);
     			append_dev(div9, div8);
     			append_dev(div8, p6);
     			append_dev(div8, t19);
     			append_dev(div8, textarea);
-    			set_input_value(textarea, /*wishes*/ ctx[6]);
+    			set_input_value(textarea, /*wishes*/ ctx[5]);
 
     			if (!mounted) {
     				dispose = [
@@ -1972,16 +1987,16 @@ var app = (function () {
     				set_input_value(input3, /*name*/ ctx[3]);
     			}
 
-    			if (dirty & /*tel*/ 16) {
-    				set_input_value(input4, /*tel*/ ctx[4]);
+    			if (dirty & /*email*/ 16 && input4.value !== /*email*/ ctx[4]) {
+    				set_input_value(input4, /*email*/ ctx[4]);
     			}
 
-    			if (dirty & /*email*/ 32 && input5.value !== /*email*/ ctx[5]) {
-    				set_input_value(input5, /*email*/ ctx[5]);
+    			if (dirty & /*tel*/ 64) {
+    				set_input_value(input5, /*tel*/ ctx[6]);
     			}
 
-    			if (dirty & /*wishes*/ 64) {
-    				set_input_value(textarea, /*wishes*/ ctx[6]);
+    			if (dirty & /*wishes*/ 32) {
+    				set_input_value(textarea, /*wishes*/ ctx[5]);
     			}
     		},
     		i: noop,
@@ -2007,8 +2022,13 @@ var app = (function () {
     function instance$7($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Reservation', slots, []);
-    	let date, time, persons, name, tel, email, wishes;
-    	const writable_props = [];
+    	let { date = null } = $$props;
+    	let { time = null } = $$props;
+    	let { persons = null } = $$props;
+    	let { name = '' } = $$props;
+    	let { email = '' } = $$props;
+    	let wishes, tel;
+    	const writable_props = ['date', 'time', 'persons', 'name', 'email'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Reservation> was created with unknown prop '${key}'`);
@@ -2035,28 +2055,36 @@ var app = (function () {
     	}
 
     	function input4_input_handler() {
-    		tel = this.value;
-    		$$invalidate(4, tel);
+    		email = this.value;
+    		$$invalidate(4, email);
     	}
 
     	function input5_input_handler() {
-    		email = this.value;
-    		$$invalidate(5, email);
+    		tel = this.value;
+    		$$invalidate(6, tel);
     	}
 
     	function textarea_input_handler() {
     		wishes = this.value;
-    		$$invalidate(6, wishes);
+    		$$invalidate(5, wishes);
     	}
+
+    	$$self.$$set = $$props => {
+    		if ('date' in $$props) $$invalidate(0, date = $$props.date);
+    		if ('time' in $$props) $$invalidate(1, time = $$props.time);
+    		if ('persons' in $$props) $$invalidate(2, persons = $$props.persons);
+    		if ('name' in $$props) $$invalidate(3, name = $$props.name);
+    		if ('email' in $$props) $$invalidate(4, email = $$props.email);
+    	};
 
     	$$self.$capture_state = () => ({
     		date,
     		time,
     		persons,
     		name,
-    		tel,
     		email,
-    		wishes
+    		wishes,
+    		tel
     	});
 
     	$$self.$inject_state = $$props => {
@@ -2064,9 +2092,9 @@ var app = (function () {
     		if ('time' in $$props) $$invalidate(1, time = $$props.time);
     		if ('persons' in $$props) $$invalidate(2, persons = $$props.persons);
     		if ('name' in $$props) $$invalidate(3, name = $$props.name);
-    		if ('tel' in $$props) $$invalidate(4, tel = $$props.tel);
-    		if ('email' in $$props) $$invalidate(5, email = $$props.email);
-    		if ('wishes' in $$props) $$invalidate(6, wishes = $$props.wishes);
+    		if ('email' in $$props) $$invalidate(4, email = $$props.email);
+    		if ('wishes' in $$props) $$invalidate(5, wishes = $$props.wishes);
+    		if ('tel' in $$props) $$invalidate(6, tel = $$props.tel);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -2078,9 +2106,9 @@ var app = (function () {
     		time,
     		persons,
     		name,
-    		tel,
     		email,
     		wishes,
+    		tel,
     		input0_input_handler,
     		input1_input_handler,
     		input2_input_handler,
@@ -2094,7 +2122,14 @@ var app = (function () {
     class Reservation extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$7, create_fragment$7, safe_not_equal, {});
+
+    		init(this, options, instance$7, create_fragment$7, safe_not_equal, {
+    			date: 0,
+    			time: 1,
+    			persons: 2,
+    			name: 3,
+    			email: 4
+    		});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -2102,6 +2137,46 @@ var app = (function () {
     			options,
     			id: create_fragment$7.name
     		});
+    	}
+
+    	get date() {
+    		throw new Error("<Reservation>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set date(value) {
+    		throw new Error("<Reservation>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get time() {
+    		throw new Error("<Reservation>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set time(value) {
+    		throw new Error("<Reservation>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get persons() {
+    		throw new Error("<Reservation>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set persons(value) {
+    		throw new Error("<Reservation>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get name() {
+    		throw new Error("<Reservation>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set name(value) {
+    		throw new Error("<Reservation>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get email() {
+    		throw new Error("<Reservation>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set email(value) {
+    		throw new Error("<Reservation>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
 
@@ -3046,7 +3121,7 @@ var app = (function () {
     /* src/components/Customer.svelte generated by Svelte v3.44.3 */
     const file$2 = "src/components/Customer.svelte";
 
-    // (18:8) <Collapsable             label="Speisekarte"         >
+    // (26:8) <Collapsable             label="Speisekarte"         >
     function create_default_slot(ctx) {
     	let menu;
     	let current;
@@ -3078,7 +3153,7 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(18:8) <Collapsable             label=\\\"Speisekarte\\\"         >",
+    		source: "(26:8) <Collapsable             label=\\\"Speisekarte\\\"         >",
     		ctx
     	});
 
@@ -3090,6 +3165,11 @@ var app = (function () {
     	let div4;
     	let div0;
     	let reservation;
+    	let updating_date;
+    	let updating_time;
+    	let updating_persons;
+    	let updating_name;
+    	let updating_email;
     	let t0;
     	let div1;
     	let collapsable;
@@ -3098,13 +3178,62 @@ var app = (function () {
     	let div2;
     	let button;
     	let span;
+    	let button_disabled_value;
     	let t3;
     	let div5;
     	let tablearea;
     	let current;
     	let mounted;
     	let dispose;
-    	reservation = new Reservation({ $$inline: true });
+
+    	function reservation_date_binding(value) {
+    		/*reservation_date_binding*/ ctx[6](value);
+    	}
+
+    	function reservation_time_binding(value) {
+    		/*reservation_time_binding*/ ctx[7](value);
+    	}
+
+    	function reservation_persons_binding(value) {
+    		/*reservation_persons_binding*/ ctx[8](value);
+    	}
+
+    	function reservation_name_binding(value) {
+    		/*reservation_name_binding*/ ctx[9](value);
+    	}
+
+    	function reservation_email_binding(value) {
+    		/*reservation_email_binding*/ ctx[10](value);
+    	}
+
+    	let reservation_props = {};
+
+    	if (/*date*/ ctx[0] !== void 0) {
+    		reservation_props.date = /*date*/ ctx[0];
+    	}
+
+    	if (/*time*/ ctx[1] !== void 0) {
+    		reservation_props.time = /*time*/ ctx[1];
+    	}
+
+    	if (/*persons*/ ctx[2] !== void 0) {
+    		reservation_props.persons = /*persons*/ ctx[2];
+    	}
+
+    	if (/*name*/ ctx[3] !== void 0) {
+    		reservation_props.name = /*name*/ ctx[3];
+    	}
+
+    	if (/*email*/ ctx[4] !== void 0) {
+    		reservation_props.email = /*email*/ ctx[4];
+    	}
+
+    	reservation = new Reservation({ props: reservation_props, $$inline: true });
+    	binding_callbacks.push(() => bind(reservation, 'date', reservation_date_binding));
+    	binding_callbacks.push(() => bind(reservation, 'time', reservation_time_binding));
+    	binding_callbacks.push(() => bind(reservation, 'persons', reservation_persons_binding));
+    	binding_callbacks.push(() => bind(reservation, 'name', reservation_name_binding));
+    	binding_callbacks.push(() => bind(reservation, 'email', reservation_email_binding));
 
     	collapsable = new Collapsable({
     			props: {
@@ -3136,22 +3265,23 @@ var app = (function () {
     			div5 = element("div");
     			create_component(tablearea.$$.fragment);
     			attr_dev(div0, "class", "box");
-    			add_location(div0, file$2, 13, 8, 321);
+    			add_location(div0, file$2, 15, 8, 462);
     			attr_dev(div1, "class", "box");
-    			add_location(div1, file$2, 16, 8, 389);
-    			add_location(span, file$2, 26, 20, 814);
+    			add_location(div1, file$2, 24, 8, 677);
+    			add_location(span, file$2, 34, 20, 1122);
+    			button.disabled = button_disabled_value = !/*isValid*/ ctx[5];
     			attr_dev(button, "class", "button is-primary");
-    			add_location(button, file$2, 25, 16, 616);
+    			add_location(button, file$2, 33, 16, 904);
     			attr_dev(div2, "class", "buttons is-right");
-    			add_location(div2, file$2, 24, 12, 569);
+    			add_location(div2, file$2, 32, 12, 857);
     			attr_dev(div3, "class", "column");
-    			add_location(div3, file$2, 23, 8, 536);
+    			add_location(div3, file$2, 31, 8, 824);
     			attr_dev(div4, "class", "column is-half");
-    			add_location(div4, file$2, 12, 4, 284);
+    			add_location(div4, file$2, 14, 4, 425);
     			attr_dev(div5, "class", "column is-half");
-    			add_location(div5, file$2, 31, 4, 914);
+    			add_location(div5, file$2, 39, 4, 1222);
     			attr_dev(div6, "class", "columns m-5");
-    			add_location(div6, file$2, 11, 0, 254);
+    			add_location(div6, file$2, 13, 0, 395);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3175,18 +3305,55 @@ var app = (function () {
     			current = true;
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*click_handler*/ ctx[0], false, false, false);
+    				dispose = listen_dev(button, "click", /*click_handler*/ ctx[11], false, false, false);
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
+    			const reservation_changes = {};
+
+    			if (!updating_date && dirty & /*date*/ 1) {
+    				updating_date = true;
+    				reservation_changes.date = /*date*/ ctx[0];
+    				add_flush_callback(() => updating_date = false);
+    			}
+
+    			if (!updating_time && dirty & /*time*/ 2) {
+    				updating_time = true;
+    				reservation_changes.time = /*time*/ ctx[1];
+    				add_flush_callback(() => updating_time = false);
+    			}
+
+    			if (!updating_persons && dirty & /*persons*/ 4) {
+    				updating_persons = true;
+    				reservation_changes.persons = /*persons*/ ctx[2];
+    				add_flush_callback(() => updating_persons = false);
+    			}
+
+    			if (!updating_name && dirty & /*name*/ 8) {
+    				updating_name = true;
+    				reservation_changes.name = /*name*/ ctx[3];
+    				add_flush_callback(() => updating_name = false);
+    			}
+
+    			if (!updating_email && dirty & /*email*/ 16) {
+    				updating_email = true;
+    				reservation_changes.email = /*email*/ ctx[4];
+    				add_flush_callback(() => updating_email = false);
+    			}
+
+    			reservation.$set(reservation_changes);
     			const collapsable_changes = {};
 
-    			if (dirty & /*$$scope*/ 4) {
+    			if (dirty & /*$$scope*/ 4096) {
     				collapsable_changes.$$scope = { dirty, ctx };
     			}
 
     			collapsable.$set(collapsable_changes);
+
+    			if (!current || dirty & /*isValid*/ 32 && button_disabled_value !== (button_disabled_value = !/*isValid*/ ctx[5])) {
+    				prop_dev(button, "disabled", button_disabled_value);
+    			}
     		},
     		i: function intro(local) {
     			if (current) return;
@@ -3225,12 +3392,38 @@ var app = (function () {
     function instance$2($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Customer', slots, []);
-    	let showContent = 'reservation';
+    	let date, time, persons, name, email;
+    	let isValid = false;
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<Customer> was created with unknown prop '${key}'`);
     	});
+
+    	function reservation_date_binding(value) {
+    		date = value;
+    		$$invalidate(0, date);
+    	}
+
+    	function reservation_time_binding(value) {
+    		time = value;
+    		$$invalidate(1, time);
+    	}
+
+    	function reservation_persons_binding(value) {
+    		persons = value;
+    		$$invalidate(2, persons);
+    	}
+
+    	function reservation_name_binding(value) {
+    		name = value;
+    		$$invalidate(3, name);
+    	}
+
+    	function reservation_email_binding(value) {
+    		email = value;
+    		$$invalidate(4, email);
+    	}
 
     	const click_handler = () => alert('Vielen Dank für Ihre Reservierung, wir haben Ihre Daten erhalten!\nSie haben eine Bestätigung per E-Mail erhalten.');
 
@@ -3239,18 +3432,47 @@ var app = (function () {
     		Reservation,
     		Menu,
     		Collapsable,
-    		showContent
+    		date,
+    		time,
+    		persons,
+    		name,
+    		email,
+    		isValid
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('showContent' in $$props) showContent = $$props.showContent;
+    		if ('date' in $$props) $$invalidate(0, date = $$props.date);
+    		if ('time' in $$props) $$invalidate(1, time = $$props.time);
+    		if ('persons' in $$props) $$invalidate(2, persons = $$props.persons);
+    		if ('name' in $$props) $$invalidate(3, name = $$props.name);
+    		if ('email' in $$props) $$invalidate(4, email = $$props.email);
+    		if ('isValid' in $$props) $$invalidate(5, isValid = $$props.isValid);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [click_handler];
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*date, time, persons, name, email*/ 31) {
+    			$$invalidate(5, isValid = date !== null && time !== null && persons > 0 && persons < 17 && name !== "" && email !== "");
+    		}
+    	};
+
+    	return [
+    		date,
+    		time,
+    		persons,
+    		name,
+    		email,
+    		isValid,
+    		reservation_date_binding,
+    		reservation_time_binding,
+    		reservation_persons_binding,
+    		reservation_name_binding,
+    		reservation_email_binding,
+    		click_handler
+    	];
     }
 
     class Customer extends SvelteComponentDev {
