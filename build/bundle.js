@@ -1826,17 +1826,12 @@ var app = (function () {
     	let t0;
     	let t1_value = /*$validity*/ ctx[7].message + "";
     	let t1;
-    	let t2;
-    	let t3_value = /*$validity*/ ctx[7].dirty + "";
-    	let t3;
 
     	const block = {
     		c: function create() {
     			span = element("span");
     			t0 = text("INVALID - ");
     			t1 = text(t1_value);
-    			t2 = space();
-    			t3 = text(t3_value);
     			attr_dev(span, "class", "validation-hint svelte-13bmutu");
     			add_location(span, file$7, 41, 16, 1475);
     		},
@@ -1844,12 +1839,9 @@ var app = (function () {
     			insert_dev(target, span, anchor);
     			append_dev(span, t0);
     			append_dev(span, t1);
-    			append_dev(span, t2);
-    			append_dev(span, t3);
     		},
     		p: function update(ctx, dirty) {
     			if (dirty & /*$validity*/ 128 && t1_value !== (t1_value = /*$validity*/ ctx[7].message + "")) set_data_dev(t1, t1_value);
-    			if (dirty & /*$validity*/ 128 && t3_value !== (t3_value = /*$validity*/ ctx[7].dirty + "")) set_data_dev(t3, t3_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(span);
@@ -2000,23 +1992,23 @@ var app = (function () {
     			add_location(input4, file$7, 35, 12, 1131);
     			attr_dev(div5, "class", "column");
     			add_location(div5, file$7, 33, 8, 1070);
-    			add_location(p5, file$7, 47, 12, 1678);
+    			add_location(p5, file$7, 47, 12, 1661);
     			attr_dev(input5, "class", "input is-primary svelte-13bmutu");
     			attr_dev(input5, "type", "tel");
     			attr_dev(input5, "placeholder", "0511 237475");
-    			add_location(input5, file$7, 48, 12, 1712);
+    			add_location(input5, file$7, 48, 12, 1695);
     			attr_dev(div6, "class", "column");
-    			add_location(div6, file$7, 46, 8, 1644);
+    			add_location(div6, file$7, 46, 8, 1627);
     			attr_dev(div7, "class", "columns");
     			add_location(div7, file$7, 28, 4, 866);
-    			add_location(p6, file$7, 53, 12, 1897);
+    			add_location(p6, file$7, 53, 12, 1880);
     			attr_dev(textarea, "class", "textarea is-primary");
     			attr_dev(textarea, "placeholder", "Tisch in Nähe von Spielecke");
-    			add_location(textarea, file$7, 54, 12, 1936);
+    			add_location(textarea, file$7, 54, 12, 1919);
     			attr_dev(div8, "class", "column");
-    			add_location(div8, file$7, 52, 8, 1863);
+    			add_location(div8, file$7, 52, 8, 1846);
     			attr_dev(div9, "class", "columns");
-    			add_location(div9, file$7, 51, 4, 1832);
+    			add_location(div9, file$7, 51, 4, 1815);
     			attr_dev(div10, "class", "p-4 control");
     			add_location(div10, file$7, 12, 0, 267);
     		},
