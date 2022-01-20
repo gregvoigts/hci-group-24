@@ -7,6 +7,7 @@
     let date, time, persons, name, email;
     let isValid = false;
     import  {validity} from "../store/Navigation.js";
+    import  {telvalidity} from "../store/Navigation.js";
 
     $: isValid = date !== null && time !== null && persons > 0 && persons < 17 && name !== "" && email !== "";
 </script>
@@ -32,7 +33,7 @@
         </div>
         <div class="column">
             <div class="buttons is-right">
-                <button disabled={!isValid || !$validity.valid} class="button is-primary" on:click="{() => alert('Vielen Dank für Ihre Reservierung, wir haben Ihre Daten erhalten!\nSie haben eine Bestätigung per E-Mail erhalten.')}">
+                <button disabled={!isValid || !$validity.valid ||!$telvalidity} class="button is-primary" on:click="{() => alert('Vielen Dank für Ihre Reservierung, wir haben Ihre Daten erhalten!\nSie haben eine Bestätigung per E-Mail erhalten.')}">
                     <span>Reservieren</span>
                 </button>
             </div>

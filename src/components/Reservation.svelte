@@ -7,7 +7,7 @@
     let wishes, tel;
     
     
-    import  {validate, validity} from "../store/Navigation.js";
+    import  {validate, validity, telvalidate, telvalidity} from "../store/Navigation.js";
 </script>
 
 <div class="p-4 control">
@@ -46,7 +46,11 @@
         </div>
         <div class="column">
             <p>Telefonnummer</p>
-            <input bind:value={tel} class="input is-primary" type="tel" placeholder="0511 237475">
+            <input bind:value={tel} class="input is-primary" type="tel" placeholder="0511 237475"
+                class:field-danger={!$telvalidity.valid}
+                class:field-success={$telvalidity.valid}
+                use:telvalidate={tel}
+            >
         </div>
     </div>
     <div class="columns">
