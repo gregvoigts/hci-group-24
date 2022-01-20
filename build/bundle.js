@@ -2541,7 +2541,7 @@ var app = (function () {
     		c: function create() {
     			svg = svg_element("svg");
     			path = svg_element("path");
-    			attr_dev(path, "fill", "#6563ff");
+    			attr_dev(path, "fill", "#7e0f12");
     			attr_dev(path, "d", "M19,11H5a1,1,0,0,0,0,2H19a1,1,0,0,0,0-2Z");
     			add_location(path, file$5, 1, 4, 88);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
@@ -2614,7 +2614,7 @@ var app = (function () {
     		c: function create() {
     			svg = svg_element("svg");
     			path = svg_element("path");
-    			attr_dev(path, "fill", "#6563ff");
+    			attr_dev(path, "fill", "#7e0f12");
     			attr_dev(path, "d", "M19,11H13V5a1,1,0,0,0-2,0v6H5a1,1,0,0,0,0,2h6v6a1,1,0,0,0,2,0V13h6a1,1,0,0,0,0-2Z");
     			add_location(path, file$4, 1, 4, 88);
     			attr_dev(svg, "xmlns", "http://www.w3.org/2000/svg");
