@@ -8,4 +8,4 @@ export const selectedIds = writable([]);
 export const selectedListSize = writable(0);
 
 export const [ validity, validate ] = createFieldValidator(requiredValidator(), emailValidator())
-export const [ telvalidity, telvalidate ] = createFieldValidator(requiredValidator(), telephoneValidator())
+export const [ telvalidity, telvalidate ] = createFieldValidator( telephoneValidator())
