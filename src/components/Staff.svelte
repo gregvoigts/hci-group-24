@@ -87,9 +87,9 @@ import { each } from "svelte/internal";
     }
 </script>
 
-<div class="staff">
-    <div style="flex: 1%;">
-        <div style="border: solid; border-right: 0px;">
+<div class="staff columns m-5">
+    <div class="box column">
+        <div>
             <h1 >Reservations</h1>
             <div>
 
@@ -157,7 +157,7 @@ import { each } from "svelte/internal";
     </div>
     
 
-    <div class="column" style="border: solid;">
+    <div class="column is-half">
         <TableArea isStaff=1/>
     </div>
 </div>
