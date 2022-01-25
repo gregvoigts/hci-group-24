@@ -33,7 +33,7 @@
         height: 100%;
     }
     img{
-        width: 49vw;
+        width: 47vw;
         position: absolute;
         z-index: -10;
     }
