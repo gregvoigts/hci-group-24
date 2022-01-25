@@ -8,14 +8,16 @@
     <nav class="navbar">
         <div class="navbar-brand">
             <a href="/" class="navbar-item">
-                <span class="icon">
+                <span class="icon ml-6">
                     🦌
                 </span>
             </a>
         </div>
         <div class="navbar-menu">
             <div class="navbar-item is-centered">
-                <p class="name has-text-weigt-bold is-size-1">Santas Reindeers</p>
+                <a href="/" class="navbar-item">
+                    <p class="name has-text-weigt-bold is-size-1">Santas Reindeers</p>
+                </a>
             </div>
             <div class="navbar-end">
                 <div class="navbar-item">
